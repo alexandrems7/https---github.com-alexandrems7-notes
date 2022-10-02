@@ -1,0 +1,38 @@
+/* Classe criada em Home.jsx */
+.Home__container {
+  /* Centraliza o elemento, transformando-o numca caixa flexível */
+  display: flex;
+
+  /* Alinha ao centro */
+  align-items: center;
+  justify-content: center;
+}
+
+/* Estilização pensando em uma tela pequena */
+@media (max-width: 350px) {
+  .Home__container {
+    justify-content: unset;
+  }
+}
+
+.ToDoList {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+
+  /* Transformou a lista em um grande grid, o que me permite trabalhar com colunas */
+  grid-gap: 25px 40px;
+}
+
+/* trabalho com medidas de diferentes telas */
+@media (max-width: 1220px) {
+  .ToDoList {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* trabalho com medidas de diferentes telas */
+@media (max-width: 840px) {
+  .ToDoList {
+    grid-template-columns: 1fr;
+  }
+}

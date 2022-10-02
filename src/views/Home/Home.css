@@ -1,0 +1,26 @@
+.Home {
+    position: relative;
+    background-image: radial-gradient(
+      farthest-corner at 40px 40px,
+      #16bc7489 60%,
+      rgba(42, 164, 79, 0.5) 100%
+    );
+    /* Altura mínima */
+    min-height: calc(100vh - 60px);
+
+    /* Margem nos 4 cantos da imagem */
+    margin: 15px;
+
+    /* Espaçamento interno do elemento*/
+    padding: 15px;
+
+    /* Arredondamento de bordas em 20px */
+    border-radius: 20px;
+
+    /* Cor de texto, caso tenha */
+    color: black;
+
+    /* Sombra */
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
+  }
+

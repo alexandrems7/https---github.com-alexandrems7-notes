@@ -1,0 +1,25 @@
+/* Importação de fonte online */
+@import url("https://fonts.googleapis.com/css?family=Exo:400,700");
+
+/* Aplica as configuração a seguir para os dois elementos */
+body,
+html {
+    /* Margens zeradas */
+  margin: 0;
+
+
+  padding: 0;
+
+  /* Largura */
+  width: 100%;
+
+  /* Altura mínima */
+  min-height: 100vh;
+
+
+  overflow: auto;
+
+  /* Cor de fundo */
+  background-color: rgb(161, 170, 157);
+  font-family: sans-serif;
+}

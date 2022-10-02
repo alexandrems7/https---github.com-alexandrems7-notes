@@ -1,0 +1,98 @@
+
+/* Trabalho diferenciado com cada classe */
+.ToDoListItem {
+    font-family: "Exo";
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 30px;
+    padding: 10px;
+  
+    /* Largura */
+    width: 315px;
+    display: flex;
+    justify-content: space-around;
+    position: relative;
+    cursor: pointer;
+  }
+  
+  /* Mais configurações para a caixa de acordo com a tela */
+  @media (max-width: 400px) {
+    .ToDoListItem {
+      width: 210px;
+      height: 180px;
+    }
+  }
+  
+  .ToDoListItem > div {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+  }
+  
+  .ToDoListItem__name {
+    font-size: 1.5em;
+    font-weight: 700;
+    line-height: 100%;
+  }
+  
+  .ToDoListItem__duration {
+    color: rgb(116, 111, 17);
+  }
+  
+  .ToDoListItem__completed {
+    font-size: 0.85em;
+  }
+  
+  .ToDoListItem__levelOfImportance {
+    font-size: 0.85em;
+  }
+  
+  .Acoes {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .Acoes__adicionar,
+  .Acoes__remover {
+    border: none;
+    color: white;
+    border-radius: 5px;
+    font-family: "Exo", sans-serif;
+    padding: 5px;
+    max-width: 280px;
+    text-align: center;
+    font-weight: 700;
+    text-transform: uppercase;
+    cursor: pointer;
+    width: 48%;
+  }
+  
+  .Acoes__remover {
+    background-color: red;
+  }
+  
+  .Acoes__adicionar {
+    background-color: rgb(81, 134, 167);
+  }
+  
+  .Acoes__adicionar--preencher {
+    width: 100%;
+  }
+  
+  
+  /* Format Add and Remove*/
+  .ToDoListItem__badge {
+    background-color: rgb(52, 66, 32);
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    vertical-align: middle;
+    position: relative;
+    color: rgb(255, 255, 255);
+    font-size: .8em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    top: -9px;
+    left: -9px;
+  }
