@@ -1,42 +1,41 @@
 .Modal {
-    padding: 30px 80px 20px 20px;
+  padding: 40px 55px 0px 20px;
     min-width: 300px;
     min-height: 200px;
     max-width: 700px;
     max-height: 450px;
-    background: rgb(161, 170, 157);
+    background: rgba(143, 139, 139, 0.918);
     position: relative;
-    border-radius: 10px;
+    border-radius: 2px;
     box-sizing: border-box;
     box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.6);
   }
+
   
   .Modal__close {
-    font-size: 2em;
+    font-size: 1.5em;
     position: absolute;
-    width: 30px;
-    height: 30px;
+    width: 80px;
+    height: 25px;
     display: flex;
     align-items: flex-end;
     justify-content: center;
-    top: 20px;
-    right: 20px;
+    top: 0px;
+    right: 0px;
     cursor: pointer;
     padding: 5px;
-    border-radius: 50%;
-    color: white;
-    transform: rotate(45deg);
+    border-radius: 1.5%;
+    color: rgb(255, 255, 255);
     transition: all 1s;
-    background-color: rgba(0, 0, 0, 0.2);
     z-index: 1;
   }
   
   .Modal__close:hover {
-    background-color: rgba(0, 0, 0, 0.4);
+    background-color: rgba(96, 38, 38, 0.515);
   }
   
   .Modal__body {
-    border-radius: 10px;
+    border-radius: 0px;
     width: 100%;
     height: 100%;
     display: flex;

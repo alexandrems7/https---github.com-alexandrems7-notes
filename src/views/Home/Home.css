@@ -3,7 +3,7 @@
     background-image: radial-gradient(
       farthest-corner at 40px 40px,
       #16bc7489 60%,
-      rgba(42, 164, 79, 0.5) 100%
+      rgba(0, 0, 0, 0.5) 100%
     );
     /* Altura mínima */
     min-height: calc(100vh - 60px);

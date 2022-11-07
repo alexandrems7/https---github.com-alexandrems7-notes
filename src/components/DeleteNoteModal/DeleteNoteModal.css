@@ -1,0 +1,32 @@
+.DeleteNoteModal {
+    margin-top: -20px;
+  }
+  
+  .DeleteNoteModal > div {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+  }
+  
+  .DeleteNoteModal__confirm,
+  .DeleteNoteModal__cancel {
+    border: none;
+    border-radius: 5px;
+    font-family: "Exo", sans-serif;
+    padding: 5px;
+    max-width: 280px;
+    text-align: center;
+    font-weight: 700;
+    text-transform: uppercase;
+    cursor: pointer;
+    width: 48%;
+    color: white;
+  }
+  
+  .DeleteNoteModal__confirm {
+    background-color: rgba(20, 84, 26, 0.403);
+  }
+  
+  .DeleteNoteModal__cancel {
+    background-color: rgba(255, 157, 0, 0.381);
+  }

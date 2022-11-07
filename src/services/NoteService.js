@@ -28,8 +28,10 @@ export const NoteService = {
     fetch(Api.createNote(), { method: "POST", body: JSON.stringify(note), mode: "cors", headers: {
       "Content-Type": "application/json",
   } }).then(parseTransformOneNote),
-  updateById: (id) =>
-    fetch(Api.updateNote(id), { method: "PUT" }).then(parseResponse),
+  updateById: (id, note) =>
+    fetch(Api.updateNote(id), { method: "PUT", body: JSON.stringify(note), mode: "cors", headers: {
+      "Content-Type": "application/json",
+      } }).then(parseResponse),
   deleteById: (id) =>
     fetch(Api.deleteNote(id), { method: "DELETE" }).then(parseResponse),
 };

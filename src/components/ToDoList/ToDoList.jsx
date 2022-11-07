@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import ToDoListItem from "components/ToDoListItem/ToDoListItem";
 import { NoteService } from "services/NoteService";
 import NoteDetailsModal from "components/NoteDetailsModal/NoteDetailsModal";
 import "./ToDoList.css";
-
-function ToDoList({ noteCreated }) {
+import { ActionMode } from "constants/index";
+function ToDoList({ noteCreated, currentMode, editNote, deleteNote, noteEdited, noteRemoved}) {
   const [toDoList, setNotes] = useState([]);
 
   const [noteSelected, setNoteSelected] = useState({});
@@ -30,27 +30,39 @@ function ToDoList({ noteCreated }) {
 
   const noteById = async (noteId) => {
     const response = await NoteService.getById(noteId);
-    setNoteModal(response);
+    const mapper = {
+      [ActionMode.NORMAL]: () => setNoteModal(response),
+      [ActionMode.EDIT]: () => editNote(response),
+      [ActionMode.DELETE]: () => deleteNote(response),
+    };
+
+    mapper[currentMode]();
+    
   };
 
   //Roda a função note all
   useEffect(() => {
     noteAll();
-  }, []);
+  }, [noteEdited, noteRemoved]);
 
-  const addNoteInList = (note) => {
+  const addNoteInList = useCallback((note) => {
     const noteAdd = [...toDoList, note];
     setNotes(noteAdd);
-  };
+  }, [toDoList]);
 
-  useEffect(() => {
-    if (noteCreated) addNoteInList(noteCreated);
-  }, [noteCreated]);
+  useEffect(() => {if (
+    noteCreated &&
+    !toDoList.map(({ id }) => id).includes(noteCreated.id)
+  ) {
+    addNoteInList(noteCreated);
+  }
+}, [addNoteInList, noteCreated, toDoList]);
 
   return (
     <div className="ToDoList">
       {toDoList.map((note, index) => (
         <ToDoListItem
+        currentMode={currentMode}
           key={`toDoListItem-${index}`}
           note={note}
           noteSelected={noteSelected[index]}

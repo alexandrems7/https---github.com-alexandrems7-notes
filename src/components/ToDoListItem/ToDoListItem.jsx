@@ -1,38 +1,42 @@
 import "./ToDoListItem.css";
-
+import { ActionMode } from "constants/index";
 function ToDoListItem({
   note,
   noteSelected,
   index,
-  removeNote,
-  addNote,
   clickItem,
+  currentMode,
+  
 }) {
   const badgeCounter = (canRender) =>
     Boolean(canRender) && (
       <span className="ToDoListItem__badge"> {noteSelected} </span>
     );
 
-
-// Funcionalidade em fase de incrementação 👇🏿👇🏿👇🏿👇🏿
-
-
-  // const removeButton = (canRender, index) =>
-  //   Boolean(canRender) && (
-  //     <button
-  //       class="Acoes__remover"
-  //       onClick={(e) => {
-  //         e.stopPropagation();
-  //         removeNote(index);
-  //       }}
-  //     >
-  //       remover
-  //     </button>
-  //   );
+  const badgeAction = (canRender) => {
+    if (canRender)
+      return (
+        <span
+          className={`ToDoListItem__tag ${
+            currentMode === ActionMode.DELETE && "ToDoListItem__tag--delete"
+          }`}
+        >
+          {currentMode}
+        </span>
+      );
+  };
 
   return (
-    <div className="ToDoListItem" onClick={()=> clickItem(note.id)}>
+    <div
+      className={`ToDoListItem ${
+        currentMode !== ActionMode.NORMAL && "ToDoListItem--disable"
+      }
+    ${currentMode === ActionMode.DELETE && "ToDoListItem--delete"}
+    `}
+      onClick={() => clickItem(note.id)}
+    >
       {badgeCounter(noteSelected, index)}
+      {badgeAction(currentMode !== ActionMode.NORMAL)}
       <div>
         <div className="ToDoListItem__name">{note.name}</div>
         <div className="ToDoListItem__duration">Duração: {note.duration}</div>
@@ -42,21 +46,7 @@ function ToDoListItem({
         <div className="ToDoListItem__levelOfImportance">
           Nível de importância: {note.levelOfImportance}
         </div>
-        <div className="ToDoListItem__acoes Acoes">
-     
-     {/* Funcionalidade em fase de incrementação 👇🏿👇🏿👇🏿👇🏿 */}
-
-          {/* <button
-            className={`Acoes__adicionar ${
-              !noteSelected && "Acoes__adicionar--preencher"
-            }`}
-            onClick={(e) => {e.stopPropagation(); addNote(index);}}
-          >
-            adicionar
-          </button>
-          {removeButton(noteSelected, index)} */}
-          
-        </div>
+        <div className="ToDoListItem__acoes Acoes"></div>
       </div>
     </div>
   );

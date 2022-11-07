@@ -3,15 +3,16 @@
 .ToDoListItem {
     font-family: "Exo";
     background: rgba(255, 255, 255, 0.3);
-    border-radius: 30px;
-    padding: 10px;
-  
+    padding: 15px;
     /* Largura */
     width: 315px;
     display: flex;
     justify-content: space-around;
     position: relative;
     cursor: pointer;
+    box-shadow: rgb(162, 158, 158) 5px 5px 10px;
+    transition: all 0.5s;
+   
   }
   
   /* Mais configurações para a caixa de acordo com a tela */
@@ -21,13 +22,51 @@
       height: 180px;
     }
   }
+
+  .ToDoListItem--disable {
+    box-shadow: 0px 0px 7px rgba(5, 19, 1, 0.722);
+  }
+  
+  .ToDoListItem--disable,
+  .ToDoListItem--disable .ToDoListItem__preco {
+    color: gray;
+  }
+  
+  .ToDoListItem--disable .ToDoListItem__badge {
+    display: none;
+  }
+  
+  .ToDoListItem--disable img {
+    filter: grayscale(100%);
+  }
+  
+  .ToDoListItem--disable button:disabled {
+    background-color: gray;
+  }
+  
+  .ToDoListItem__tag {
+    background-color: rgba(69, 113, 69, 0.687) !important;
+    color: rgb(255, 255, 255) !important;
+    position: absolute;
+    font-size: 0.6em;
+    border-radius: 5px;
+    padding: 5px;
+    top: -15px;
+    left: -10px;
+    letter-spacing: 1px;
+  }
   
   .ToDoListItem > div {
     display: flex;
     justify-content: space-between;
     flex-direction: column;
+    width: 100%;
+
   }
   
+
+
+
   .ToDoListItem__name {
     font-size: 1.5em;
     font-weight: 700;
@@ -40,10 +79,14 @@
   
   .ToDoListItem__completed {
     font-size: 0.85em;
+    width: 100%;
+
   }
   
   .ToDoListItem__levelOfImportance {
     font-size: 0.85em;
+    width: 100%;
+
   }
   
   .Acoes {
@@ -67,12 +110,22 @@
   }
   
   .Acoes__remover {
-    background-color: red;
+    background-color: rgb(0, 255, 68);
   }
   
   .Acoes__adicionar {
     background-color: rgb(81, 134, 167);
   }
+
+  .ToDoListItem--delete {
+    background-color: rgba(81, 134, 167, 0.071);
+  }
+  
+  .ToDoListItem__tag--delete {
+    background-color: rgb(74, 101, 69) !important;
+  }
+
+
   
   .Acoes__adicionar--preencher {
     width: 100%;

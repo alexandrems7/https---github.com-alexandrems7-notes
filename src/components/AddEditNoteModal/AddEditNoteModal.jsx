@@ -1,13 +1,18 @@
 import { useState, useEffect } from "react";
 import Modal from "components/Modal/Modal";
 import { NoteService } from "services/NoteService";
-import "./AddNoteModal.css";
-function AddNoteModal({ closeModal, onCreateNote }) {
+import "./AddEditNoteModal.css";
+
+import { ActionMode } from "constants/index";
+
+  
+function AddEditNoteModal({ closeModal, onCreateNote, currentMode, noteToEdit, onUpdateNote }) {
   const form = {
-    name: "",
-    duration: "",
-    completed: "",
-    levelOfImportance: "",
+      //expressão importante: coalescência nula
+    name: noteToEdit?.name ?? "",
+    duration: noteToEdit?.duration ??  "",
+    completed:  noteToEdit?.completed ?? "",
+    levelOfImportance: noteToEdit?.levelOfImportance ??  "",
   };
 
   const [state, setState] = useState(form);
@@ -25,7 +30,7 @@ function AddNoteModal({ closeModal, onCreateNote }) {
     const response = !Boolean(
       state.name.length &&
         state.completed.length &&
-        state.duration.length &&
+        String(state.duration).length &&
         state.levelOfImportance.length
     );
     setCanDisable(response);
@@ -35,18 +40,43 @@ function AddNoteModal({ closeModal, onCreateNote }) {
     canDisableSendButton();
   });
 
-  const createNote = async () => {
+  const handleSend = async () => {
     const { name, duration, completed, levelOfImportance } = state;
 
     const note = {
+      ...(noteToEdit && { _id: noteToEdit?.id }),
       name,
       duration,
       completed,
       levelOfImportance,
     };
 
-    const response = await NoteService.create(note);
-    onCreateNote(response);
+    const serviceCall = {
+      [ActionMode.NORMAL]: () => NoteService.create(note),
+      [ActionMode.EDIT]: () => NoteService.updateById(noteToEdit?.id, note),
+    }
+
+    const response = await serviceCall[currentMode]();
+
+    const actionResponse = {
+      [ActionMode.NORMAL]: () => onCreateNote(response),
+      [ActionMode.EDIT]: () => onUpdateNote(response),
+    }
+
+    actionResponse[currentMode]();
+
+    const reset = {
+      name: '',
+      duration: '',
+      completed: '',
+      levelOfImportance: '',
+    }
+
+    setState(reset);
+
+    // const response = await NoteService.create(note);
+    // onCreateNote(response);
+
     closeModal();
   };
 
@@ -56,7 +86,7 @@ function AddNoteModal({ closeModal, onCreateNote }) {
     <Modal closeModal={closeModal}>
       <div className="AddNoteModal">
         <form autoComplete="off">
-          <h2>Adicionar nota</h2>
+        <h2> { ActionMode.EDIT === currentMode ? 'Atualizar' : 'Adicionar ' } </h2>
           <div>
             <label htmlFor="name" className="AddNoteModal__text">
               Nome:{" "}
@@ -113,9 +143,9 @@ function AddNoteModal({ closeModal, onCreateNote }) {
             type="button"
             disabled={canDisable}
             className="AddNoteModal__env"
-            onClick={createNote}
+            onClick={handleSend}
           >
-            Enviar
+            {ActionMode.NORMAL === currentMode ? "Enviar" : "Atualizar"}
           </button>
         </form>
       </div>
@@ -123,4 +153,4 @@ function AddNoteModal({ closeModal, onCreateNote }) {
   );
 }
 
-export default AddNoteModal;
+export default AddEditNoteModal;

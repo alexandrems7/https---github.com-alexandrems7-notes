@@ -1,7 +1,7 @@
 .NoteDetailsModal {
     font-family: "Exo";
     background: rgba(255, 255, 255, 0.3);
-    border-radius: 10px;
+    border-radius: 1.5px;
     padding: 10px 0px 10px 10px;
     max-height: 350px;
     box-sizing: border-box;

@@ -1,88 +1,104 @@
+/* Foramtando logo */
+.Header {
+  max-width: 1110px;
+  margin: 0 auto 25px auto;
+  position: relative;
+}
 
-  /* Foramtando logo */
+.row {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  margin: 20px 0 35px 0;
+}
+
+.Logo {
+  display: flex;
+  align-items: center;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.3);
+  width: 340px;
+  height: 45px;
+}
+
+.Logo__titulo {
+  position: absolute;
+  left: 55px;
+  font-family: "Exo";
+  font-weight: 700;
+  font-size: 2.5em;
+}
+
+.Logo__icone {
+  position: absolute;
+  left: -20px;
+  top: -15px;
+}
+
+.Opcoes {
+  display: flex;
+}
+
+.Note {
+  background: none;
+  border: none;
+  transform: translateY(-3px);
+  transition: all 0.5s;
+  padding: 0;
+  margin-left: 15px;
+  border-radius: 5px;
+
+
+
+}
+
+.Note__icone {
+  cursor: pointer;
+  transform: translateY(3px);
+}
+
+.Note__active {
+  background: rgba(24, 41, 19, 0.173);
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+}
+
+.Note--delete {
+  background: rgba(24, 41, 19, 0.173);
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+}
+
+
+@media (max-width: 1220px) {
   .Header {
-    max-width: 1110px;
-    margin: 0 auto 25px auto;
-    position: relative;
+    max-width: 720px;
   }
-  
+}
+
+@media (max-width: 840px) {
+  .Header {
+    max-width: 320px;
+  }
   .row {
     display: flex;
-    width: 100%;
-    justify-content: space-between;
-    margin: 20px 0 35px 0;
+    flex-direction: column;
+    row-gap: 20px;
   }
-  
-  .Logo {
-    display: flex;
-    align-items: center;
-    border-radius: 10px;
-    background-color: rgba(255, 255, 255, 0.3);
-    width: 340px;
-    height: 45px;
+}
+
+@media (max-width: 400px) {
+  .Header {
+    max-width: 250px;
   }
-  
+
+  .row {
+    column-gap: 20px;
+  }
+
   .Logo__titulo {
-    position: absolute;
-    left: 55px;
-    font-family: "Exo";
-    font-weight: 700;
-    font-size: 2.5em;
-  }
-  
-  .Logo__icone {
-    position: absolute;
-    left: -20px;
-    top: -15px;
-  }
-    
-  .Opcoes {
-    display: flex;
-  }
-  
-  .Note {
-    background: none;
-    border: none;
-  }
-  
-  .Note__icone {
-    cursor: pointer;
+    font-size: 1.5em;
   }
 
-  @media (max-width: 1220px) {
-    .Header {
-      max-width: 720px;
-    }
+  .Logo {
+    width: 100%;
   }
-  
-  @media (max-width: 840px) {
-    .Header {
-      max-width: 320px;
-    }
-    .row {
-      display: flex;
-      flex-direction: column;
-      row-gap: 20px;
-    }
-  }
-  
-  @media (max-width: 400px) {
-    .Header {
-      max-width: 250px;
-    }
-  
-    .row {
-      column-gap: 20px;
-    }
-  
-    .Logo__titulo {
-      font-size: 1.5em;
-    }
-
-    .Logo{
-      width: 100%;
-    }
-  }
-
-
-
+}
